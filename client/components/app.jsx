@@ -8,6 +8,17 @@ class App extends React.Component {
       grades: props.grades
     };
   }
+
+  componentDidMount() {
+    fetch('api / grades', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/JSON'
+      } })
+      .then(res => res.json())
+      .then(grades => this.setState({ grades }));
+
+  }
   render() {
     return (
       <div className="app-container">
