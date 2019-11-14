@@ -1,35 +1,31 @@
 import React from 'react';
 
-class GradeTable extends React.Component{
-  constructor(props){
-    super(props);
+function GradeTable(props) {
 
-  }
-}
+  const allGrades = props.grades.map(
+    gradeResult => <Grade key={gradeResult.id} gradeRow={gradeResult}/>
+  );
 
-render(){
   return (
-  <div class="table-container">
-    <table class="sgt-table">
-      <tr class="row-headers">
-        <th class="student-header">Student</th>
-        <th class="course-header">Course</th>
-        <th class="grade-header">Grade</th>
+    <table className="table sgt-table">
+      <tr className="row-headers">
+        <th scope="col">Student</th>
+        <th scope="col">Course</th>
+        <th scope="col">Grade</th>
       </tr>
-      <tr>
-        <td>Sir Arthur</td>
-        <td>Grail Questing</td>
-        <td class="grade">5</td>
-      </tr>
-      <tr>
-        <td>Sir Lancelot</td>
-        <td>Grail Questing</td>
-        <td class="grade">98</td>
-      </tr>
+      {allGrades}
     </table>
-  </div>
   );
 }
 
+function Grade(props) {
+  return (
+    <tr scope="row" key={props.gradeRow.id}>
+      <td>{props.gradeRow.name}</td>
+      <td>{props.gradeRow.course}</td>
+      <td>{props.gradeRow.grade}</td>
+    </tr>
+  );
+}
 
-export default GradeTable
+export default GradeTable;

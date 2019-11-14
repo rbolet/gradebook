@@ -14,8 +14,6 @@ body *{
 
 header {
   font-size: 1.5rem;
-  height: 10%;
-  padding: .75rem 0rem;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -27,19 +25,4 @@ table, tr, td, th{
 
 tr:nth-child(even){
   background-color: lightgray;
-}
-table{
-  width: 75%;
-}
-
-td{
-  padding: .25rem;
-}
-
-.grade-header{
-  width: 6rem;
-}
-
-.grade{
-  text-align: center;
 }
