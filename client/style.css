@@ -1,0 +1,45 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+body *{
+  box-sizing: border-box;
+}
+
+#root-container{
+  width: 100vw;
+  padding: .5rem 2rem;
+}
+
+header {
+  font-size: 1.5rem;
+  height: 10%;
+  padding: .75rem 0rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+table, tr, td, th{
+  font-family: 'Roboto';
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even){
+  background-color: lightgray;
+}
+table{
+  width: 75%;
+}
+
+td{
+  padding: .25rem;
+}
+
+.grade-header{
+  width: 6rem;
+}
+
+.grade{
+  text-align: center;
+}
