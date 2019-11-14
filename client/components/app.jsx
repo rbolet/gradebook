@@ -5,12 +5,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: props.grades
+      grades: []
     };
   }
 
   componentDidMount() {
-    fetch('api / grades', {
+    fetch('api/grades', {
       method: 'GET',
       headers: {
         'Content-Type': 'text/JSON'
@@ -21,7 +21,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="app-container">
+      <div className="app-container container-fluid">
         <Header text="Student Grade Table"/>
         <GradeTable grades={this.state.grades}/>
       </div>
