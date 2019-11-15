@@ -8,12 +8,14 @@ function GradeTable(props) {
 
   return (
     <table className="table sgt-table">
-      <tr className="row-headers">
-        <th scope="col">Student</th>
-        <th scope="col">Course</th>
-        <th scope="col">Grade</th>
-      </tr>
-      {allGrades}
+      <tbody>
+        <tr className="row-headers">
+          <th scope="col">Student</th>
+          <th scope="col">Course</th>
+          <th scope="col">Grade</th>
+        </tr>
+        {allGrades}
+      </tbody>
     </table>
   );
 }

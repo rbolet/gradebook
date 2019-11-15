@@ -15,3 +15,7 @@ th {
 tr:nth-child(even) {
   background-color: lightgray;
 }
+
+.average{
+  text-align: right;
+}
