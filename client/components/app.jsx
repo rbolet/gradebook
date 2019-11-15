@@ -35,7 +35,8 @@ class App extends React.Component {
         const grades = this.state.grades.slice();
         grades.push(newEntry);
         this.updateTable(grades);
-      });
+      })
+      .catch(error => alert(`POST error: ${error.message()}`));
   }
 
   calculateAverage(gradesArray) {
@@ -56,7 +57,8 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       } })
       .then(res => res.json())
-      .then(grades => this.updateTable(grades));
+      .then(grades => this.updateTable(grades))
+      .catch(error => alert(`GET error: ${error.message()}`));
 
   }
   render() {
