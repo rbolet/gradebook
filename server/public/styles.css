@@ -1,0 +1,21 @@
+header {
+  font-size: 1.5rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+
+tr,
+td,
+th {
+  font-family: 'Roboto';
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+.average{
+  text-align: right;
+}
