@@ -22,6 +22,10 @@ function GradeTable(props) {
 }
 
 class Grade extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+  }
   handleDeleteClick() {
     this.props.onDelete(this.props.gradeRow.id);
   }
