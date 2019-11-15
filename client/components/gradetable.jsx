@@ -7,7 +7,7 @@ function GradeTable(props) {
   );
 
   return (
-    <table className="table sgt-table">
+    <table className="table sgt-table col-md-9">
       <tbody>
         <tr className="row-headers">
           <th scope="col">Student</th>

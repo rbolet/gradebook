@@ -9,12 +9,33 @@ class App extends React.Component {
       grades: [],
       average: '--'
     };
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   updateTable(grades) {
     const average = this.calculateAverage(grades);
     this.setState({ grades, average });
 
+  }
+
+  onSubmit(newGradeEntry) {
+    const request = {
+      'name': newGradeEntry.newName,
+      'course': newGradeEntry.newCourse,
+      'grade': newGradeEntry.newGrade
+    };
+    fetch('/api/grades', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(request)
+    })
+      .then(res => res.json())
+      .then(newEntry => {
+        const grades = this.state.grades.slice();
+        grades.push(newEntry);
+        this.updateTable(grades);
+      });
   }
 
   calculateAverage(gradesArray) {
@@ -27,11 +48,12 @@ class App extends React.Component {
     return average;
 
   }
+
   componentDidMount() {
-    fetch('api/grades', {
+    fetch('/api/grades', {
       method: 'GET',
       headers: {
-        'Content-Type': 'text/JSON'
+        'Content-Type': 'application/json'
       } })
       .then(res => res.json())
       .then(grades => this.updateTable(grades));
@@ -41,7 +63,9 @@ class App extends React.Component {
     return (
       <div className="app-container container-fluid">
         <Header averageAll={this.state.average} text="Student Grade Table"/>
-        <GradeTable grades={this.state.grades}/><GradeForm/>
+        <div className="container-fluid row">
+          <GradeTable grades={this.state.grades}/><GradeForm onSubmit={this.onSubmit}/>
+        </div>
       </div>
     );
   }
