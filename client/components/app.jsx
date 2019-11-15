@@ -10,6 +10,22 @@ class App extends React.Component {
     };
   }
 
+  updateTable(grades) {
+    const average = this.calculateAverage(grades);
+    this.setState({ grades, average });
+
+  }
+
+  calculateAverage(gradesArray) {
+    let gradeSum = 0; let studentSum = 0;
+    for (const student of gradesArray) {
+      gradeSum += parseInt(student.grade);
+      ++studentSum;
+    }
+    const average = Math.round(gradeSum / studentSum);
+    return average;
+
+  }
   componentDidMount() {
     fetch('api/grades', {
       method: 'GET',
@@ -17,7 +33,7 @@ class App extends React.Component {
         'Content-Type': 'text/JSON'
       } })
       .then(res => res.json())
-      .then(grades => this.setState({ grades }));
+      .then(grades => this.updateTable(grades));
 
   }
   render() {
