@@ -4,12 +4,9 @@ header {
 }
 
 
-tr,
-td,
-th {
-  font-family: 'Roboto';
+.table tr, .table td {
   border: 1px solid black;
-  border-collapse: collapse;
+  vertical-align: middle;
 }
 
 tr:nth-child(even) {

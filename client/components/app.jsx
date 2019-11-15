@@ -50,6 +50,10 @@ class App extends React.Component {
 
   }
 
+  onDelete(studentID) {
+
+  }
+
   componentDidMount() {
     fetch('/api/grades', {
       method: 'GET',
@@ -66,7 +70,7 @@ class App extends React.Component {
       <div className="app-container container-fluid">
         <Header averageAll={this.state.average} text="Student Grade Table"/>
         <div className="container-fluid row">
-          <GradeTable grades={this.state.grades}/><GradeForm onSubmit={this.onSubmit}/>
+          <GradeTable grades={this.state.grades} onDelete={this.onDelete}/><GradeForm onSubmit={this.onSubmit}/>
         </div>
       </div>
     );

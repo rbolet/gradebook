@@ -3,7 +3,7 @@ import React from 'react';
 function GradeTable(props) {
 
   const allGrades = props.grades.map(
-    gradeResult => <Grade key={gradeResult.id} gradeRow={gradeResult}/>
+    gradeResult => <Grade key={gradeResult.id} gradeRow={gradeResult} onDelete={props.onDelete}/>
   );
 
   return (
@@ -13,6 +13,7 @@ function GradeTable(props) {
           <th scope="col">Student</th>
           <th scope="col">Course</th>
           <th scope="col">Grade</th>
+          <th scope="col">Operations</th>
         </tr>
         {allGrades}
       </tbody>
@@ -20,14 +21,24 @@ function GradeTable(props) {
   );
 }
 
-function Grade(props) {
-  return (
-    <tr scope="row" key={props.gradeRow.id}>
-      <td>{props.gradeRow.name}</td>
-      <td>{props.gradeRow.course}</td>
-      <td>{props.gradeRow.grade}</td>
-    </tr>
-  );
-}
+class Grade extends React.Component {
+  handleDeleteClick() {
+    this.props.onDelete(this.props.gradeRow.id);
+  }
 
+  render() {
+    return (
+      <tr key={this.props.gradeRow.id}>
+        <td>{this.props.gradeRow.name}</td>
+        <td>{this.props.gradeRow.course}</td>
+        <td>{this.props.gradeRow.grade}</td>
+        <td>
+          <div className="button-group d-flex justify-content-center" role="group">
+            <button onClick={this.handleDeleteClick} className="btn btn-outline-danger mx-1" >Delete</button>
+          </div>
+        </td>
+      </tr>
+    );
+  }
+}
 export default GradeTable;
