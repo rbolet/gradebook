@@ -11,6 +11,7 @@ class App extends React.Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   updateTable(grades) {
@@ -19,34 +20,50 @@ class App extends React.Component {
 
   }
 
-  onSubmit(newGradeEntry) {
-    const request = {
-      'name': newGradeEntry.newName,
-      'course': newGradeEntry.newCourse,
-      'grade': newGradeEntry.newGrade
-    };
-    fetch('/api/grades', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
-    })
-      .then(res => res.json())
-      .then(newEntry => {
-        const grades = this.state.grades.slice();
-        grades.push(newEntry);
-        this.updateTable(grades);
-      });
-  }
-
   calculateAverage(gradesArray) {
     let gradeSum = 0; let studentSum = 0;
     for (const student of gradesArray) {
       gradeSum += parseInt(student.grade);
       ++studentSum;
     }
-    const average = Math.round(gradeSum / studentSum);
+    let average = Math.round(gradeSum / studentSum);
+    average = isNaN(average) ? '--' : average;
     return average;
 
+  }
+
+  onSubmit(newGradeEntry) {
+    const requestBody = {
+      name: newGradeEntry.newName,
+      course: newGradeEntry.newCourse,
+      grade: newGradeEntry.newGrade
+    };
+    fetch('/api/grades', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody)
+    })
+      .then(res => res.json())
+      .then(newEntry => {
+        const grades = this.state.grades.slice();
+        grades.push(newEntry);
+        this.updateTable(grades);
+      })
+      .catch(error => alert(`POST error: ${error}`));
+  }
+
+  onDelete(studentID) {
+    fetch(`/api/grades/${studentID}`, {
+      method: 'DELETE', headers: { 'Content-Type': 'application/json' } })
+      .then(studentID => {
+        const copy = this.state.grades.slice();
+        const indexOfRecordInCopy = copy.findIndex(record => record.id === parseInt(studentID));
+
+        copy.splice(indexOfRecordInCopy, 1);
+        return copy;
+      })
+      .then(grades => this.updateTable(grades))
+      .catch(error => alert(`DELETE error: ${error.message}`));
   }
 
   componentDidMount() {
@@ -56,7 +73,8 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       } })
       .then(res => res.json())
-      .then(grades => this.updateTable(grades));
+      .then(grades => this.updateTable(grades))
+      .catch(error => alert(`GET error: ${error.message}`));
 
   }
   render() {
@@ -64,7 +82,7 @@ class App extends React.Component {
       <div className="app-container container-fluid">
         <Header averageAll={this.state.average} text="Student Grade Table"/>
         <div className="container-fluid row">
-          <GradeTable grades={this.state.grades}/><GradeForm onSubmit={this.onSubmit}/>
+          <GradeTable grades={this.state.grades} onDelete={this.onDelete}/><GradeForm onSubmit={this.onSubmit}/>
         </div>
       </div>
     );
