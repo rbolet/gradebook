@@ -25,6 +25,7 @@ class GradeForm extends React.Component {
     event.preventDefault();
     const newGradeEntry = Object.assign({}, this.state);
     this.props.onSubmit(newGradeEntry);
+    document.querySelector('.add-grade-form').reset();
     this.onClear();
   }
 

@@ -20,6 +20,18 @@ class App extends React.Component {
 
   }
 
+  calculateAverage(gradesArray) {
+    let gradeSum = 0; let studentSum = 0;
+    for (const student of gradesArray) {
+      gradeSum += parseInt(student.grade);
+      ++studentSum;
+    }
+    let average = Math.round(gradeSum / studentSum);
+    average = isNaN(average) ? '--' : average;
+    return average;
+
+  }
+
   onSubmit(newGradeEntry) {
     const requestBody = {
       name: newGradeEntry.newName,
@@ -38,17 +50,6 @@ class App extends React.Component {
         this.updateTable(grades);
       })
       .catch(error => alert(`POST error: ${error}`));
-  }
-
-  calculateAverage(gradesArray) {
-    let gradeSum = 0; let studentSum = 0;
-    for (const student of gradesArray) {
-      gradeSum += parseInt(student.grade);
-      ++studentSum;
-    }
-    const average = Math.round(gradeSum / studentSum);
-    return average;
-
   }
 
   onDelete(studentID) {
