@@ -19,8 +19,14 @@
       "id": 3
     },
     {
-      "name": "Rapha ",
-      "course": "Fetch Error Finding",
+      "name": "Zaphod Beeblebrox",
+      "course": "Hitchhiking",
+      "grade": "100",
+      "id": 4
+    },
+    {
+      "name": "Rapha",
+      "course": "POSTing",
       "grade": "70",
       "id": 5
     }
