@@ -1,14 +1,29 @@
+const express = require('express');
 const path = require('path');
-const jsonServer = require('json-server');
+const app = express();
+const http = require('http').createServer(app);
+const bodyParser = require('body-parser');
+const db = require('./_config');
 
-const dbPath = path.resolve(__dirname, '../database/db.json');
-const server = jsonServer.create();
-const middleware = jsonServer.defaults();
-const endpoints = jsonServer.router(dbPath);
+const staticPath = path.join(__dirname, 'public');
+const staticMiddleware = express.static(staticPath);
+app.use(staticMiddleware);
+app.use(bodyParser.json());
 
-server.use(middleware);
-server.use('/api', endpoints);
-server.listen(3001, () => {
-  // eslint-disable-next-line no-console
-  console.log('JSON Server listening on port 3001\n');
+app.get('/api/grades', (req, res, next) => {
+  db.query(`SELECT * from studentGrades`)
+    .then(([rows]) => {
+      res.status(200).json(rows);
+    })
+    .catch(err => next(err));
+});
+
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(500).json({ error: 'An unexpected error occurred' });
+});
+
+http.listen(3031, () => {
+  // eslint-disable-next-line
+  console.log('listening on 3031...');
 });
