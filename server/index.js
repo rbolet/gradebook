@@ -30,9 +30,9 @@ app.post('/api/grades', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.delete('/api/grades', (req, res, next) => {
+app.delete('/api/grades/:studentId', (req, res, next) => {
   const deleteSQLquery = `DELETE FROM studentGrades
-                            WHERE id = ${parseInt(req.body.id)};`;
+                            WHERE id = ${req.params.studentId};`;
 
   db.query(deleteSQLquery)
     .then(([rows]) => {
