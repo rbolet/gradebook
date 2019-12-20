@@ -18,6 +18,18 @@ app.get('/api/grades', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/grades', (req, res, next) => {
+  const insertSQLquery = `INSERT INTO studentGrades (name, course, grade)
+                          VALUES ('${req.body.name}',
+                            '${req.body.course}',
+                            '${req.body.grade}');`;
+  db.query(insertSQLquery)
+    .then(([rows]) => {
+      res.status(200).json(rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use((error, req, res, next) => {
   console.error(error);
   res.status(500).json({ error: 'An unexpected error occurred' });

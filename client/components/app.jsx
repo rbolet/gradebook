@@ -12,6 +12,7 @@ class App extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.updateTable = this.updateTable.bind(this);
   }
 
   updateTable(grades) {
@@ -44,7 +45,13 @@ class App extends React.Component {
       body: JSON.stringify(requestBody)
     })
       .then(res => res.json())
-      .then(newEntry => {
+      .then(result => {
+        const newEntry = {
+          id: result.insertId,
+          name: newGradeEntry.newName,
+          course: newGradeEntry.newCourse,
+          grade: newGradeEntry.newGrade
+        };
         const grades = this.state.grades.slice();
         grades.push(newEntry);
         this.updateTable(grades);
