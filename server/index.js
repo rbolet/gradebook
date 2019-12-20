@@ -18,11 +18,11 @@ app.get('/api/grades', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.post('api/grades', (req, res, next) => {
+app.post('/api/grades', (req, res, next) => {
   const insertSQLquery = `INSERT INTO studentGrades (name, course, grade)
-                          VALUES (${req.body.name},
-                            ${req.body.course},
-                            ${req.body.grade});`;
+                          VALUES ('${req.body.name}',
+                            '${req.body.course}',
+                            '${req.body.grade}');`;
   db.query(insertSQLquery)
     .then(([rows]) => {
       res.status(200).json(rows);
