@@ -1,22 +1,16 @@
 {
   "grades": [
     {
-      "name": "Dan Paschal",
-      "course": "Web Development",
-      "grade": 100,
-      "id": 1
+      "name": "Person",
+      "course": "Studying",
+      "grade": "90",
+      "id": 5
     },
     {
-      "name": "Scott Bowler",
-      "course": "Web Development",
-      "grade": 100,
-      "id": 2
-    },
-    {
-      "name": "Tim Davis",
-      "course": "Web Development",
-      "grade": 50,
-      "id": 3
+      "name": "Last",
+      "course": "Last",
+      "grade": "88",
+      "id": 7
     }
   ]
 }
