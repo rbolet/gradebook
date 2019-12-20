@@ -1,64 +1,16 @@
 {
   "grades": [
     {
-      "name": "Dan Paschal",
-      "course": "Web Development",
-      "grade": 100,
-      "id": 1
-    },
-    {
-      "name": "Scott Bowler",
-      "course": "Web Development",
-      "grade": 100,
-      "id": 2
-    },
-    {
-      "name": "Tim Davis",
-      "course": "Web Development",
-      "grade": 50,
-      "id": 3
-    },
-    {
-      "name": "Zaphod Beeblebrox",
-      "course": "Hitchhiking",
-      "grade": "100",
-      "id": 4
-    },
-    {
-      "name": "Rapha",
-      "course": "POSTing",
-      "grade": "70",
+      "name": "Person",
+      "course": "Studying",
+      "grade": "90",
       "id": 5
     },
     {
-      "name": "Fred",
-      "course": "Form Clearing",
+      "name": "Last",
+      "course": "Last",
       "grade": "88",
-      "id": 6
-    },
-    {
-      "name": "Mr. Clean",
-      "course": "Form Clearing",
-      "grade": "98",
       "id": 7
-    },
-    {
-      "name": "Mr Try ",
-      "course": "",
-      "grade": "99",
-      "id": 8
-    },
-    {
-      "name": "Ron Burgondy",
-      "course": "Mustache-ing",
-      "grade": "100",
-      "id": 9
-    },
-    {
-      "name": "Tom Cruise",
-      "course": "Mustache-ing",
-      "grade": "35",
-      "id": 10
     }
   ]
 }

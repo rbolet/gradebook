@@ -55,7 +55,7 @@ class App extends React.Component {
   onDelete(studentID) {
     fetch(`/api/grades/${studentID}`, {
       method: 'DELETE', headers: { 'Content-Type': 'application/json' } })
-      .then(studentID => {
+      .then(res => {
         const copy = this.state.grades.slice();
         const indexOfRecordInCopy = copy.findIndex(record => record.id === parseInt(studentID));
 
