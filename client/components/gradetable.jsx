@@ -22,13 +22,6 @@ function GradeTable(props) {
 }
 
 class Grade extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleDeleteClick = this.handleDeleteClick.bind(this);
-  }
-  handleDeleteClick() {
-    this.props.onDelete(this.props.gradeRow.id);
-  }
 
   render() {
     return (
@@ -38,7 +31,7 @@ class Grade extends React.Component {
         <td>{this.props.gradeRow.grade}</td>
         <td>
           <div className="button-group d-flex justify-content-center" role="group">
-            <button onClick={this.handleDeleteClick} className="btn btn-outline-danger mx-1" >Delete</button>
+            <button onClick={this.props.onDelete.bind(this, this.props.gradeRow.id)} className="btn btn-outline-danger mx-1" >Delete</button>
           </div>
         </td>
       </tr>
