@@ -30,6 +30,17 @@ app.post('/api/grades', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('api/grades', (req, res, next) => {
+  const deleteSQLquery = `DELETE FROM studentGrades
+                            WHERE id = ${parseInt(req.body.id)};`;
+
+  db.query(deleteSQLquery)
+    .then(([rows]) => {
+      res.status(200).json(rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use((error, req, res, next) => {
   console.error(error);
   res.status(500).json({ error: 'An unexpected error occurred' });
