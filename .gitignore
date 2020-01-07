@@ -3,3 +3,4 @@
 .DS_Store
 node_modules
 server/public/main.js*
+server/_config.js
