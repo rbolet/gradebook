@@ -13,7 +13,7 @@ function GradeTable(props) {
           <th scope="col">Student</th>
           <th scope="col">Course</th>
           <th scope="col">Grade</th>
-          <th scope="col">Operations</th>
+          <th scope="col"></th>
         </tr>
         {allGrades}
       </tbody>
@@ -31,7 +31,7 @@ class Grade extends React.Component {
         <td>{this.props.gradeRow.grade}</td>
         <td>
           <div className="button-group d-flex justify-content-center" role="group">
-            <button onClick={this.props.onDelete.bind(this, this.props.gradeRow.id)} className="btn btn-outline-danger mx-1" >Delete</button>
+            <button onClick={this.props.onDelete.bind(this, this.props.gradeRow.id)} className="btn btn-outline-danger mx-1" >X</button>
           </div>
         </td>
       </tr>
