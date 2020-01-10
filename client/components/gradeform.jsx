@@ -38,7 +38,7 @@ class GradeForm extends React.Component {
   }
   render() {
     return (
-      <div className="grade-form container col-md-3 d-flex flex-column align-items-end order-lg-12 mb-2">
+      <div className="grade-form col-12 col-md-3 d-flex flex-column align-items-center order-lg-12 mb-2">
         <form onSubmit={this.onAdd} className="add-grade-form ">
           <div className="d-flex flex-row align-items-center justify-content-end  mb-2">
             <i className="fas fa-user col-1"></i><input onChange={this.onInputChange} className="mx-2" type="text" name="newName" placeholder="Name" required/>

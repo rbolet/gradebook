@@ -79,9 +79,11 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="app-container container-fluid">
-        <Header averageAll={this.state.average} text="Student Grade Table"/>
-        <div className="container-fluid row">
+      <div>
+        <div>
+          <Header averageAll={this.state.average} text="Student Grade Table"/>
+        </div>
+        <div className="row px-2">
           <GradeForm onSubmit={this.onSubmit} />
           <GradeTable grades={this.state.grades} onDelete={this.onDelete}/>
         </div>
@@ -92,13 +94,13 @@ class App extends React.Component {
 
 function Header(props) {
   return (
-    <header className="row mb-3">
+    <div className="row header mb-3">
       <div className="col-6">{props.text}</div>
       <div className="average col-6">
         <p className="d-inline-block mb-0">Average Grade</p>
         <span className="badge badge-light ml-2">{props.averageAll}</span>
       </div>
-    </header>);
+    </div>);
 }
 
 export default App;
