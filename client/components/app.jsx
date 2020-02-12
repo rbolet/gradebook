@@ -86,13 +86,12 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div>
-          <Header averageAll={this.state.average} text="Student Grade Table"/>
-        </div>
-        <div className="row px-2">
+      <div className="app">
+        <Header averageAll={this.state.average} text="Student Grade Table" />
+        <div className="container-fluid row pt-4">
           <GradeForm onSubmit={this.onSubmit} />
           <GradeTable grades={this.state.grades} onDelete={this.onDelete}/>
+
         </div>
       </div>
     );
@@ -101,13 +100,16 @@ class App extends React.Component {
 
 function Header(props) {
   return (
-    <div className="row header mb-3">
-      <div className="col-6">{props.text}</div>
-      <div className="average col-6">
-        <p className="d-inline-block mb-0">Average Grade</p>
-        <span className="badge badge-light ml-2">{props.averageAll}</span>
+    <div className="row sticky-top header bg-secondary w-100 mx-0 px-2 text-white">
+      <div className="row w-100">
+        <div className="col">{props.text}</div>
+        <div className="average col row justify-content-end align-items-center">
+          <p className="d-inline-block mb-0">Average Grade</p>
+          <span className="badge badge-light ml-2">{props.averageAll}</span>
+        </div>
       </div>
-    </div>);
+    </div>
+  );
 }
 
 export default App;
