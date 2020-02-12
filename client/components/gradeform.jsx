@@ -38,26 +38,30 @@ class GradeForm extends React.Component {
   }
   render() {
     return (
-      <div className="grade-form col-12 col-md-3 d-flex flex-column align-items-center order-lg-12 mb-2">
+      <div className="grade-form col">
         <form onSubmit={this.onAdd} className="add-grade-form ">
-          <div className="d-flex flex-row align-items-center justify-content-end  mb-2">
-            <i className="fas fa-user col-1"></i><input onChange={this.onInputChange} className="mx-2" type="text" name="newName" placeholder="Name" required/>
+          <div className="form-group row justify-content-center align-items-center">
+            <i className="fas fa-user col-1 mr-2 form-icon"></i>
+            <input onChange={this.onInputChange}
+              className="col-9 form-input" type="text" name="newName" placeholder="Name" required/>
           </div>
-          <div className="d-flex flex-row align-items-center justify-content-end mb-2">
-            <i className="fas fa-book-open"></i><input onChange={this.onInputChange} className="mx-2" type="text" name="newCourse" placeholder="Course" required/>
+          <div className="form-group row justify-content-center align-items-center">
+            <i className="fas fa-book-open col-1 mr-2 form-icon"></i>
+            <input onChange={this.onInputChange}
+              className="col-9 form-input" type="text" name="newCourse" placeholder="Course" required/>
           </div>
-          <div className="d-flex flex-row align-items-center justify-content-end mb-2">
-            <i className="fas fa-graduation-cap"></i>
+          <div className="form-group row justify-content-center align-items-center">
+            <i className="fas fa-graduation-cap col-1 mr-2 form-icon"></i>
             <input
               onChange={this.onInputChange}
-              className="mx-2 w-75"
+              className="col-9 form-input"
               name="newGrade"
               placeholder="Grade"
               type="number" min="0" max="100" required/>
           </div>
-          <div className="btn-group-md d-flex flex-row justify-content-end" role="group" >
-            <button className="btn btn-outline-secondary mx-1" type="submit">Add</button>
-            <button onClick={this.onClear}className="btn btn-outline-secondary mx-1" type="reset">Clear</button>
+          <div className="btn-group-md row justify-content-center mb-4" role="group" >
+            <button className="btn btn-success col-md-2 col-lg-4 mx-2 form-button" type="submit"><i className="fas fa-user-plus"></i></button>
+            <button onClick={this.onClear} className="btn btn-danger col-md-2 col-lg-4 form-button" type="reset"><i className="fas fa-redo-alt"></i></button>
           </div>
         </form>
       </div>

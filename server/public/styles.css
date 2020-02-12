@@ -1,6 +1,9 @@
+button {
+  max-width: 100px;
+}
 
 .header {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -16,4 +19,14 @@ tr:nth-child(even) {
 
 .average{
   text-align: right;
+}
+
+@media screen and (max-width: 650px){
+  .grade-form, .form-button{
+    font-size: 1.5rem;
+  }
+
+  .form-icon {
+    display: none;
+  }
 }

@@ -1,23 +1,34 @@
 import React from 'react';
 
 function GradeTable(props) {
-
-  const allGrades = props.grades.map(
-    gradeResult => <Grade key={gradeResult.id} gradeRow={gradeResult} onDelete={props.onDelete}/>
-  );
+  let AllGrades = [];
+  if (props.grades.length < 1) {
+    AllGrades = (<tr className="w-100"><td className="w-100 text-muted">No Results Found</td></tr>);
+  } else {
+    AllGrades = props.grades.map(gradeResult => {
+      return (
+        <Grade
+          key={gradeResult.id}
+          gradeRow={gradeResult}
+          onDelete={props.onDelete}/>
+      );
+    });
+  }
 
   return (
-    <table className="table sgt-table col-lg-9 order-lg-1">
-      <tbody>
-        <tr className="row-headers">
-          <th scope="col">Student</th>
-          <th scope="col">Course</th>
-          <th scope="col">Grade</th>
-          <th scope="col"></th>
-        </tr>
-        {allGrades}
-      </tbody>
-    </table>
+    <div className="col-lg-9">
+      <table className="table sgt-table">
+        <tbody>
+          <tr className="row-headers">
+            <th scope="col">Student</th>
+            <th scope="col">Course</th>
+            <th scope="col">Grade</th>
+            <th scope="col"></th>
+          </tr>
+          {AllGrades}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -31,7 +42,10 @@ class Grade extends React.Component {
         <td>{this.props.gradeRow.grade}</td>
         <td>
           <div className="button-group d-flex justify-content-center" role="group">
-            <button onClick={this.props.onDelete.bind(this, this.props.gradeRow.id)} className="btn btn-outline-danger mx-1" >X</button>
+            <button onClick={this.props.onDelete.bind(this, this.props.gradeRow.id)}
+              className="btn btn-outline-danger" >
+              <i className="far fa-trash-alt"/>
+            </button>
           </div>
         </td>
       </tr>
