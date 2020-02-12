@@ -1,10 +1,19 @@
 import React from 'react';
 
 function GradeTable(props) {
-
-  const allGrades = props.grades.map(
-    gradeResult => <Grade key={gradeResult.id} gradeRow={gradeResult} onDelete={props.onDelete}/>
-  );
+  let AllGrades = [];
+  if (props.grades.length < 1) {
+    AllGrades = (<tr className="w-100"><td className="w-100 text-muted">No Results Found</td></tr>);
+  } else {
+    AllGrades = props.grades.map(gradeResult => {
+      return (
+        <Grade
+          key={gradeResult.id}
+          gradeRow={gradeResult}
+          onDelete={props.onDelete}/>
+      );
+    });
+  }
 
   return (
     <div className="col-lg-9">
@@ -16,7 +25,7 @@ function GradeTable(props) {
             <th scope="col">Grade</th>
             <th scope="col"></th>
           </tr>
-          {allGrades}
+          {AllGrades}
         </tbody>
       </table>
     </div>
@@ -34,7 +43,7 @@ class Grade extends React.Component {
         <td>
           <div className="button-group d-flex justify-content-center" role="group">
             <button onClick={this.props.onDelete.bind(this, this.props.gradeRow.id)}
-              className="btn btn-outline-danger mx-1" >
+              className="btn btn-outline-danger" >
               <i className="far fa-trash-alt"/>
             </button>
           </div>
